@@ -40,6 +40,7 @@ public class Main {
                         Resuelto_4.run();
                         break;
                     case 2:
+                        Resuelto_5.run();
                         break;
                     case 3:
                         break;
