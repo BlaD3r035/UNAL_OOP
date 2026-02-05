@@ -50,3 +50,8 @@ Cada proyecto puede contener un README.MD para su uso
 > Arboleda Mazo Walter Hugo, Programación Orientada A objetos - Universidad Nacional de Colombia Sede Medellín
 
 > Lógica de Programación - Efraín Alberto Oviedo
+
+---
+
+Repos relacionados:
+UNAL Fundamentos de programación: [Github](https://github.com/BlaD3r035/UNAL_fnds_prog)
