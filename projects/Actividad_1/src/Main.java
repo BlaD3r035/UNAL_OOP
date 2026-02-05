@@ -43,10 +43,13 @@ public class Main {
                         Resuelto_5.run();
                         break;
                     case 3:
+                        Propuesto_12.run();
                         break;
                     case 4:
+                        Propuesto_14.run();
                         break;
                     case 5:
+                        Propuesto_17.run();
                         break;
                     case 6:
                         System.out.println("Saliendo...");
