@@ -47,7 +47,7 @@ Cada proyecto puede contener un README.MD para su uso
 
 > Samuel Alejandro Estepa Estupiñan - undergraduate student Ingeniería de Sistemas e Informática @ Universidad Nacional de Colombia - Sede Medellín
 
-> Arboleda Mazo Walter Hugo, Programación Orientada A objetos - Universidad Nacional de Colombia Sede Medellín
+> Arboleda Mazo Walter Hugo, profesor Programación Orientada A objetos - Universidad Nacional de Colombia Sede Medellín
 
 > Lógica de Programación - Efraín Alberto Oviedo
 
