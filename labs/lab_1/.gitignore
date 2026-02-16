@@ -1,8 +1,8 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-.idea
-Actividad_1.iml
+.idea/
+lab_1.iml
 .apt_generated
 .classpath
 .factorypath
@@ -21,6 +21,5 @@ bin/
 /.nb-gradle/
 
 .vscode/
-
 
 .DS_Store
