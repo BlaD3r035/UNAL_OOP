@@ -59,4 +59,4 @@ Cada proyecto puede contener un README.MD para su uso
 
 Repos relacionados:
 UNAL Fundamentos de Programación: [Github](https://github.com/BlaD3r035/UNAL_fnds_prog)
-UNAL Visión Artificial () : [Github](https://github.com/BlaD3r035/UNAL_COMPUTER_VISION) 
+UNAL Visión Artificial (Computer vision) : [Github](https://github.com/BlaD3r035/UNAL_COMPUTER_VISION) 
