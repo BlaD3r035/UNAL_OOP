@@ -1,5 +1,5 @@
 public class Planet {
-    private String name;
+    private final String name;
     private int satellites = 0;
     private double mass = 0;
     private double volume = 0;
@@ -8,7 +8,7 @@ public class Planet {
     public enum PlanetType {
         TERRESTRIAL, GAS_GIANT, DWARF
     }
-    private PlanetType type;
+    private final PlanetType type;
     private boolean isVisible = false;
     private int orbitalPeriod = 0;
     private int rotationPeriod = 0;
