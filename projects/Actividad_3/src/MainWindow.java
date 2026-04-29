@@ -106,6 +106,15 @@ public class MainWindow extends JFrame implements ActionListener {
        }
 
        if(event.getSource() == calculateBtn){
+           if(!issAllFieldsFilled()){
+               JOptionPane.showMessageDialog(null,"All fields must be filled");
+               return;
+           }
+           if(!isAllFieldsCorrect()){
+               JOptionPane.showMessageDialog(null, "All fields must be numbers");
+               return;
+           }
+
            Marks marks = new Marks();
            marks.markList[0] = Double.parseDouble(mark1Field.getText());
            marks.markList[1] = Double.parseDouble(mark2Field.getText());
@@ -121,8 +130,31 @@ public class MainWindow extends JFrame implements ActionListener {
     }
 
     private boolean isAllFieldsCorrect(){
-        // <--Todo-->
-        //  field types and empty fields alerts
+
+        try{
+            Double.parseDouble(mark1Field.getText());
+            Double.parseDouble(mark2Field.getText());
+            Double.parseDouble(mark3Field.getText());
+            Double.parseDouble(mark4Field.getText());
+            Double.parseDouble(mark5Field.getText());
+            return true;
+        }catch ( NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private boolean issAllFieldsFilled(){
+        String[] inputList = new String[5];
+        inputList[0] = mark1Field.getText();
+        inputList[1] = mark2Field.getText();
+        inputList[2] = mark3Field.getText();
+        inputList[3] = mark4Field.getText();
+        inputList[4] = mark5Field.getText();
+        for( int i = 0 ; i< inputList.length; i++){
+            if(inputList[i].isEmpty()){
+                return false;
+            }
+        }
         return true;
     }
 }
