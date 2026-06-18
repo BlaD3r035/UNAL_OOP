@@ -1,4 +1,4 @@
-package e2_406;
+package e4_406;
 
 public class Seller {
     String firstName;

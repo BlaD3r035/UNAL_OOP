@@ -1,4 +1,4 @@
-package e2_412;
+package e4_412;
 
 public class Main {
 
