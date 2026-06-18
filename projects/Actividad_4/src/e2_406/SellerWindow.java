@@ -1,13 +1,13 @@
 package e2_406;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 
 public class SellerWindow extends JFrame implements ActionListener {
-    private Container container;
+    private JPanel container;
     private JLabel firstName, lastName, age;
     private JTextField firstNameField, lastNameField, ageField;
     private JButton calculateBtn;
@@ -16,14 +16,16 @@ public class SellerWindow extends JFrame implements ActionListener {
     public SellerWindow() {
         start();
         setTitle("Seller Registration");
-        setSize(360, 300);
+        setSize(350, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
     }
 
     private void start() {
-        container = getContentPane();
+        container = (JPanel) getContentPane();
+        container.setBorder(new EmptyBorder(15, 15, 15, 15));
+
         JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
 
         firstName = new JLabel("First Name:");
@@ -43,8 +45,7 @@ public class SellerWindow extends JFrame implements ActionListener {
 
         container.add(inputPanel, BorderLayout.NORTH);
 
-
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 10));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
         calculateBtn = new JButton("Submit");
         buttonPanel.add(calculateBtn);
         calculateBtn.addActionListener(this);

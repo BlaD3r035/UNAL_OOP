@@ -28,7 +28,7 @@ public class Seller {
 
     void checkAge(int age){
          // Nota profesor: Dejo el check del rango de edad primero ya que no tiene sentido
-         // comparar primero si es mayor de adad sin antes verificar que la edad no sea negativa
+         // comparar primero si es mayor de adad sin antes verificar que la edad no sea negativa (Mensaje de Ex incorrecto)
         if(age >= 0 && age < 120 ){
             this.age = age;
         }else throw new IllegalArgumentException("Seller's age must be in range 0 to 120");
