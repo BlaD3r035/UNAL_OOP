@@ -1,8 +1,5 @@
 import Dir.Directory;
-import PopUpWindows.CreateWindow;
-import PopUpWindows.DeleteWindow;
-import PopUpWindows.ReadWindow;
-import PopUpWindows.UpdateWindow;
+import PopUpWindows.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,12 +8,12 @@ import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame implements ActionListener {
     private JPanel container;
-    private JButton createBtn, readBtn, updateBtn, deleteBtn;
+    private JButton createBtn, readBtn, updateBtn, deleteBtn, listBtn;
     public Directory directory;
 
     public MainWindow() {
         setTitle("");
-        setSize(450, 220);
+        setSize(450, 310);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -52,6 +49,11 @@ public class MainWindow extends JFrame implements ActionListener {
         deleteBtn.setBounds(240, 130, 170, 40);
         container.add(deleteBtn);
         deleteBtn.addActionListener(this);
+
+        listBtn = new JButton("Contact List");
+        listBtn.setBounds(30, 190, 380, 40);     // ancho completo abajo
+        listBtn.addActionListener(this);
+        container.add(listBtn);
     }
 
     @Override
@@ -73,6 +75,10 @@ public class MainWindow extends JFrame implements ActionListener {
         if(e.getSource() == deleteBtn){
             DeleteWindow dWindow = new DeleteWindow(directory);
             dWindow.setVisible(true);
+        }
+        if (e.getSource() == listBtn) {
+            ListWindow lWindow = new ListWindow(directory);
+            lWindow.setVisible(true);
         }
 
     }

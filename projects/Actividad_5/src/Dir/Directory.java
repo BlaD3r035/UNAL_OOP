@@ -3,6 +3,8 @@ package Dir;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Directory {
     File directoryFile;
@@ -149,12 +151,24 @@ public class Directory {
             return true;
         }
     }
+    public List<Contact> getAllContacts() throws IOException {
+        List<Contact> contacts = new ArrayList<>();
+        try (RandomAccessFile raf = new RandomAccessFile(directoryFile, "r")) {
+            while (raf.getFilePointer() < raf.length()) {
+                String line = raf.readLine();
+                if (line == null || line.isBlank()) continue;
+                String[] parts = line.split("!");
+                contacts.add(new Contact(parts[0], parts[1]));
+            }
+        }
+        return contacts;
+    }
     public static boolean isValidInteger(String str){
         if(str == null || str.isEmpty()){
             return false;
         }
         try{
-            Integer.parseInt(str);
+            Long.parseLong(str);
             return true;
         }catch (NumberFormatException e ){
             return  false;
