@@ -1,3 +1,4 @@
+import Dir.Directory;
 import PopUpWindows.CreateWindow;
 import PopUpWindows.DeleteWindow;
 import PopUpWindows.ReadWindow;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 public class MainWindow extends JFrame implements ActionListener {
     private JPanel container;
     private JButton createBtn, readBtn, updateBtn, deleteBtn;
+    public Directory directory;
 
     public MainWindow() {
         setTitle("");
@@ -18,6 +20,7 @@ public class MainWindow extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+        directory = new Directory();
         start();
     }
 
@@ -54,21 +57,21 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == createBtn){
-            CreateWindow cWindow = new CreateWindow();
+            CreateWindow cWindow = new CreateWindow(directory);
             cWindow.setVisible(true);
 
         }
         if(e.getSource() == readBtn){
-            ReadWindow rWindow = new ReadWindow();
+            ReadWindow rWindow = new ReadWindow(directory);
             rWindow.setVisible(true);
         }
         if(e.getSource() == updateBtn){
-            UpdateWindow uWindow = new UpdateWindow();
+            UpdateWindow uWindow = new UpdateWindow(directory);
             uWindow.setVisible(true);
 
         }
         if(e.getSource() == deleteBtn){
-            DeleteWindow dWindow = new DeleteWindow();
+            DeleteWindow dWindow = new DeleteWindow(directory);
             dWindow.setVisible(true);
         }
 

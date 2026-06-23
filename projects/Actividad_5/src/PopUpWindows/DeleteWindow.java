@@ -1,14 +1,21 @@
 package PopUpWindows;
 
+import Dir.Directory;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
-public class DeleteWindow extends JFrame {
+public class DeleteWindow extends JFrame implements ActionListener {
     private JPanel container;
     private JTextField nameField, phoneField;
     private JButton deleteBtn, cancelBtn;
+    private Directory directory;
 
-    public DeleteWindow() {
+    public DeleteWindow(Directory directory) {
+        this.directory = directory;
         setTitle("Delete Contact");
         setSize(350, 230);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -45,10 +52,88 @@ public class DeleteWindow extends JFrame {
 
         deleteBtn = new JButton("Delete Contact");
         deleteBtn.setBounds(30, 140, 140, 35);
+        deleteBtn.addActionListener(this);
         container.add(deleteBtn);
 
         cancelBtn = new JButton("Cancel");
         cancelBtn.setBounds(185, 140, 125, 35);
+        cancelBtn.addActionListener(this);
         container.add(cancelBtn);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == cancelBtn) {
+            dispose();
+            return;
+        }
+
+        if (e.getSource() == deleteBtn) {
+            String name  = nameField.getText().trim();
+            String phone = phoneField.getText().trim();
+
+            if (name.isEmpty() && phone.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Please fill at least one field.",
+                        "Validation Error",
+                        JOptionPane.WARNING_MESSAGE
+                );
+                return;
+            }
+
+            if ( !phone.isEmpty() && !Directory.isValidInteger(phone)) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Phone number must be a valid integer.",
+                        "Invalid Number",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            String target = !name.isEmpty() ? name : phone;
+            String by     = !name.isEmpty() ? "name" : "phone";
+            int confirm = JOptionPane.showConfirmDialog(
+                    this,
+                    "Are you sure you want to delete the contact with " + by + ": '" + target + "'?",
+                    "Confirm Delete",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+            if (confirm != JOptionPane.YES_OPTION) return;
+
+            try {
+                if (!name.isEmpty()) {
+                    directory.deleteContact(name);
+                } else {
+                    Directory.Contact contact = directory.readContactPhone(phone);
+                    directory.deleteContact(contact.name());
+                }
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Contact deleted successfully.",
+                        "Success",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                dispose();
+
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        ex.getMessage(),
+                        "Not Found",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "File error: " + ex.getMessage(),
+                        "I/O Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
     }
 }
