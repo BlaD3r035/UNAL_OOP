@@ -51,7 +51,7 @@ public class MainWindow extends JFrame implements ActionListener {
         deleteBtn.addActionListener(this);
 
         listBtn = new JButton("Contact List");
-        listBtn.setBounds(30, 190, 380, 40);     // ancho completo abajo
+        listBtn.setBounds(30, 190, 380, 40);
         listBtn.addActionListener(this);
         container.add(listBtn);
     }
